@@ -470,6 +470,12 @@
   border-color: var(--accent);
 }
 
+.attachButtonGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .attachBtn {
   background: transparent;
   border: 1px solid var(--border);
@@ -479,6 +485,7 @@
   font-weight: 500;
   color: var(--mono-secondary);
   cursor: pointer;
+  white-space: nowrap;
   transition: all 0.15s;
 }
 
@@ -523,4 +530,107 @@
   text-align: center;
   font-size: 11px;
   color: var(--mono-muted);
+}
+
+/* Image URL Modal Overlay */
+.urlModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(20, 20, 19, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.urlModal {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.urlModalTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  color: var(--mono-white);
+}
+
+.urlModalSubtitle {
+  font-size: 13px;
+  color: var(--mono-secondary);
+  line-height: 1.4;
+}
+
+.urlForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.urlInput {
+  width: 100%;
+  background: var(--bg-dark);
+  color: var(--mono-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.urlInput:focus {
+  border-color: var(--accent);
+}
+
+.urlModalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancelUrlBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--mono-secondary);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.cancelUrlBtn:hover {
+  background: var(--bg-card);
+  color: var(--mono-white);
+}
+
+.submitUrlBtn {
+  background: var(--accent);
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.submitUrlBtn:hover {
+  background: var(--accent-hover);
 }

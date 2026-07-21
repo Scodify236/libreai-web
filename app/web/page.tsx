@@ -36,6 +36,8 @@ export default function WebChatApp() {
 
   const [inputMessage, setInputMessage] = useState('');
   const [attachedImageBase64, setAttachedImageBase64] = useState<string | null>(null);
+  const [showUrlModal, setShowUrlModal] = useState(false);
+  const [imageUrlInput, setImageUrlInput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [imageError, setImageError] = useState<string | null>(null);
 
@@ -152,6 +154,24 @@ export default function WebChatApp() {
       setAttachedImageBase64(reader.result as string);
     };
     reader.readAsDataURL(file);
+  };
+
+  // Attach Image via URL
+  const handleImageUrlSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setImageError(null);
+    const url = imageUrlInput.trim();
+    if (!url) return;
+
+    if (!isCurrentModelVision) {
+      setImageError(`Selected model (${currentTextModel?.name || 'current model'}) is text-only. Switch to a vision model like Kimi K2.7 or Llama 3.2 Vision in the top bar to analyze images.`);
+      setShowUrlModal(false);
+      return;
+    }
+
+    setAttachedImageBase64(url);
+    setImageUrlInput('');
+    setShowUrlModal(false);
   };
 
   // Send Message Logic
@@ -719,13 +739,29 @@ export default function WebChatApp() {
               style={{ display: 'none' }}
             />
 
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              className={`${styles.attachBtn} ${attachedImageBase64 ? styles.attachBtnActive : ''}`}
-              title={isCurrentModelVision ? 'Attach Image' : 'Select a vision model to attach images'}
-            >
-              Attach Image
-            </button>
+            <div className={styles.attachButtonGroup}>
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                className={`${styles.attachBtn} ${attachedImageBase64 ? styles.attachBtnActive : ''}`}
+                title={isCurrentModelVision ? 'Upload Image File' : 'Select a vision model to attach images'}
+              >
+                Upload File
+              </button>
+
+              <button
+                onClick={() => {
+                  if (!isCurrentModelVision) {
+                    setImageError(`Selected model (${currentTextModel?.name || 'current model'}) is text-only. Switch to a vision model like Kimi K2.7 or Llama 3.2 Vision in the top bar to analyze images.`);
+                    return;
+                  }
+                  setShowUrlModal(true);
+                }}
+                className={styles.attachBtn}
+                title="Paste Image URL"
+              >
+                Image URL
+              </button>
+            </div>
 
             <textarea
               rows={1}
@@ -758,6 +794,35 @@ export default function WebChatApp() {
             Cloudflare Workers AI • 100% Local Storage • Zero Telemetry
           </div>
         </div>
+
+        {/* Image URL Modal */}
+        {showUrlModal && (
+          <div className={styles.urlModalOverlay} onClick={() => setShowUrlModal(false)}>
+            <div className={styles.urlModal} onClick={(e) => e.stopPropagation()}>
+              <h3 className={styles.urlModalTitle}>Attach Image via URL</h3>
+              <p className={styles.urlModalSubtitle}>Paste a public direct link to an image (HTTP/HTTPS) for vision analysis.</p>
+              <form onSubmit={handleImageUrlSubmit} className={styles.urlForm}>
+                <input
+                  type="url"
+                  placeholder="https://example.com/image.jpg"
+                  value={imageUrlInput}
+                  onChange={(e) => setImageUrlInput(e.target.value)}
+                  className={styles.urlInput}
+                  autoFocus
+                  required
+                />
+                <div className={styles.urlModalActions}>
+                  <button type="button" onClick={() => setShowUrlModal(false)} className={styles.cancelUrlBtn}>
+                    Cancel
+                  </button>
+                  <button type="submit" className={styles.submitUrlBtn}>
+                    Attach Image
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
