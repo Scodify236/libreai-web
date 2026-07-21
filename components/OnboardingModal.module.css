@@ -1,0 +1,294 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal {
+  width: 100%;
+  max-width: 580px;
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 10px;
+}
+
+.brandGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoWrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(217, 119, 87, 0.4);
+  overflow: hidden;
+}
+
+.logo {
+  object-fit: cover;
+}
+
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.headerBy {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.skipBtn {
+  background: transparent;
+  border: none;
+  color: var(--mono-secondary);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.skipBtn:hover {
+  color: var(--mono-white);
+}
+
+.dotsRow {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0 20px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+
+.activeDot {
+  width: 24px;
+  background: var(--accent);
+}
+
+.slideBody {
+  padding: 10px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.slideBodyLeft {
+  padding: 10px 32px 24px;
+}
+
+.iconCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.iconSymbol {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.slideTitle {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.slideTitleCenter {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.slideSubtitle {
+  font-size: 14px;
+  color: var(--mono-secondary);
+  line-height: 1.5;
+  max-width: 440px;
+  margin-bottom: 24px;
+}
+
+.slideSubtitleCenter {
+  font-size: 13px;
+  color: var(--mono-secondary);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.videoPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(217, 119, 87, 0.12);
+  border: 1px solid rgba(217, 119, 87, 0.5);
+  color: var(--accent);
+  padding: 8px 16px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.authorBadge {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--mono-white);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 16px;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.featureRow {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+
+.featureRow strong {
+  display: block;
+  font-size: 14px;
+  color: var(--mono-white);
+  margin-bottom: 2px;
+}
+
+.featureRow p {
+  font-size: 12.5px;
+  color: var(--mono-secondary);
+  line-height: 1.4;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mono-white);
+  letter-spacing: 0.05em;
+}
+
+.field input {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--mono-white);
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.inputWithSuffix {
+  display: flex;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.inputWithSuffix input {
+  flex: 1;
+  border: none;
+  background: transparent;
+}
+
+.suffixBtn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mono-secondary);
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.fieldNotice {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--mono-secondary);
+  margin-top: 4px;
+}
+
+.footer {
+  padding: 16px 24px 24px;
+}
+
+.continueBtn {
+  width: 100%;
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.continueBtn:hover {
+  background: var(--accent-hover);
+}
